@@ -1,0 +1,16 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+uploads/
+
+# Dump foto lokal (bukan source code, jangan ikut ke-push — bisa besar)
+Foto_Katalog_Item/
+
+# Config Firebase/AI Studio legacy — berisi API key project lama,
+# sudah tidak dipakai (lihat CLAUDE.md bagian migrasi), sengaja tidak di-commit
+firebase-applet-config.json

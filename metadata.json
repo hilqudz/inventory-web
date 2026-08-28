@@ -1,0 +1,6 @@
+{
+  "name": "Aplikasi Inventory Gudang",
+  "description": "Sistem Manajemen Inventory Gudang dengan Firebase, Excel Import/Export, Tracking DO OPEN, dan Rekonsiliasi Stock.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

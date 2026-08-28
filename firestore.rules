@@ -1,0 +1,77 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Default deny rule for unknown endpoints
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.resource.data.nik is string;
+      allow update: if true;
+      allow delete: if isSignedIn();
+    }
+
+    // 2. Master Item catalog
+    match /master_item/{itemId} {
+      allow read: if true;
+      allow create, update: if (request.resource.data.kode is string || request.resource.data.itemCode is string);
+      allow delete: if isSignedIn();
+    }
+
+    // 3. Transaksi Masuk
+    match /transaksi_masuk/{transId} {
+      allow read: if true;
+      allow create, update: if (request.resource.data.documentNo is string || request.resource.data.itemCode is string);
+      allow delete: if isSignedIn();
+    }
+
+    // 4. Transaksi Keluar
+    match /transaksi_keluar/{transId} {
+      allow read: if true;
+      allow create, update: if (request.resource.data.documentNo is string || request.resource.data.itemCode is string);
+      allow delete: if isSignedIn();
+    }
+
+    // 5. DO OPEN
+    match /do_open/{doId} {
+      allow read: if true;
+      allow create, update: if (request.resource.data.documentNo is string || request.resource.data.itemCode is string);
+      allow delete: if isSignedIn();
+    }
+
+    // 6. Request DO OPEN
+    match /request_do_open/{reqId} {
+      allow read: if true;
+      allow create, update: if (request.resource.data.documentNo is string || request.resource.data.itemCode is string);
+      allow delete: if isSignedIn();
+    }
+
+    // 7. Katalog Foto
+    match /katalog_foto/{photoId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.itemCode is string;
+      allow delete: if isSignedIn();
+    }
+
+    // 8. Container Status
+    match /container_status/{containerId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if isSignedIn();
+    }
+  }
+}
+

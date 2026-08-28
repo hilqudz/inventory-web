@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "master_items": {
+      "title": "Master Items",
+      "description": "Catalog of warehouse inventory items",
+      "type": "object",
+      "properties": {
+        "itemCode": { "type": "string" },
+        "itemName": { "type": "string" },
+        "groupName": { "type": "string" },
+        "hargaJual": { "type": "number" },
+        "hargaBeli": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["itemCode", "itemName"]
+    },
+    "transaksi_masuk": {
+      "title": "Transaksi Masuk",
+      "description": "Inbound stock movement transactions",
+      "type": "object",
+      "properties": {
+        "postingDate": { "type": "string" },
+        "entryName": { "type": "string" },
+        "documentNo": { "type": "string" },
+        "itemCode": { "type": "string" },
+        "category": { "type": "string" },
+        "remark": { "type": "string" },
+        "qty": { "type": "number" },
+        "fromLocation": { "type": "string" },
+        "toLocation": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["itemCode", "qty", "documentNo"]
+    },
+    "transaksi_keluar": {
+      "title": "Transaksi Keluar",
+      "description": "Outbound stock movement transactions",
+      "type": "object",
+      "properties": {
+        "postingDate": { "type": "string" },
+        "entryName": { "type": "string" },
+        "documentNo": { "type": "string" },
+        "itemCode": { "type": "string" },
+        "category": { "type": "string" },
+        "remark": { "type": "string" },
+        "qty": { "type": "number" },
+        "fromLocation": { "type": "string" },
+        "toLocation": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["itemCode", "qty", "documentNo"]
+    },
+    "do_open": {
+      "title": "DO OPEN",
+      "description": "Pending Delivery Orders waiting for release",
+      "type": "object",
+      "properties": {
+        "postingDate": { "type": "string" },
+        "entryName": { "type": "string" },
+        "documentNo": { "type": "string" },
+        "itemCode": { "type": "string" },
+        "category": { "type": "string" },
+        "remark": { "type": "string" },
+        "qty": { "type": "number" },
+        "fromLocation": { "type": "string" },
+        "toLocation": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["documentNo", "itemCode", "qty"]
+    }
+  }
+}
